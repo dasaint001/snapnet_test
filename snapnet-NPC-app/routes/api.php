@@ -49,17 +49,26 @@ $router->group($user, function () use ($router) {
 Route::post('register',[Register::class,'addNewUser']);
 Route::post('login',[Authentication::class,'loginUser']);
 
+//Routes for Wards
 Route::post('ward/create',[Locations::class,'addNewWard']);
 Route::delete('ward/delete',[Locations::class,'deleteWard']);
 Route::put('ward/edit',[Locations::class,'updateWard']);
 Route::get('wards',[Locations::class,'allWards']);
 
+//Routes for States
 Route::post('state/create',[Locations::class,'addNewState']);
 Route::delete('state/delete',[Locations::class,'deleteState']);
 Route::put('state/edit',[Locations::class,'updateState']);
 Route::get('states',[Locations::class,'allStates']);
 
+//Routes for LGAs
 Route::post('lga/create',[Locations::class,'addNewLga']);
 Route::delete('lga/delete',[Locations::class,'deleteLga']);
 Route::put('lga/edit',[Locations::class,'updateLga']);
 Route::get('lgas',[Locations::class,'allLgas']);
+
+//Routes for Citizen
+Route::post('citizen/create',[Locations::class,'addNewCitizen']);
+Route::delete('citizen/delete',[Locations::class,'deleteCitizen']);
+Route::put('citizen/edit',[Locations::class,'updateCitizen']);
+Route::get('citizens',[Locations::class,'allCitizens']);

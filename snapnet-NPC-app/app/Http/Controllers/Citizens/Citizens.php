@@ -25,6 +25,35 @@ class Citizens extends Controller
 
     public function addNewCitizen(Request $request)
     {
+        $validator = \Validator::make($request->all(), $this->rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'invalid credential supplied'
+            ], 400);
+        }
        return CitizenService::createCitizen($request);
+    }
+
+        public function updateCitizen(Request $request,$id)
+    {
+        $validator = \Validator::make($request->all(), $this->rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'invalid credential supplied'
+            ], 400);
+        }
+       return CitizenService::editCitizen($request,$id);
+    }
+
+    public function allCitizens(Request $request)
+    {
+       return CitizenService::getCitizen($request);
+    }
+
+    public function deleteCitizen(Request $request, $id)
+    {
+       return CitizenService::removeCitizen($request, $id);
     }
 }
